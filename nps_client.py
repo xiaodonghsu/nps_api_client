@@ -17,9 +17,9 @@ import binascii
 class NPSClient:
     """NPS服务API客户端 - 支持完整的客户端、域名解析、隧道管理"""
     
-    def __init__(self, base_url="http://uassist.cn/nps"):
+    def __init__(self, base_url="127.0.0.1:8080", auth_crypt_key):
         self.base_url = base_url
-        self.auth_crypt_key = "H6RQdb25UxCrUbKF"
+        self.auth_crypt_key = auth_crypt_key
         
     def _get_auth_params(self):
         """获取认证参数 (auth_key, timestamp)"""
@@ -611,7 +611,7 @@ class NPSClient:
 
 def main():
     """主函数"""
-    client = NPSClient()
+    client = NPSClient(auth_crypt_key="1234567890123456")
     
     print("NPS API客户端")
 
@@ -626,4 +626,5 @@ def main():
         print(e)
 
 if __name__ == "__main__":
+
     main()
